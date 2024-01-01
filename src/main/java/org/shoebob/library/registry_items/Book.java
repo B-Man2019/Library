@@ -1,29 +1,26 @@
-package org.shoebob.library;
+package org.shoebob.library.registry_items;
 
 import org.shoebob.library.enums.Tags;
+import org.shoebob.library.interfaces.RegistryItem;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Book {
+public class Book implements RegistryItem {
     // TODO: Find the correct data type for an ISBN number
-    private UUID uuid;
     private String isbn;
     private String name;
     private String author;
-    private ArrayList<Tags> tags;
-    public Book(String isbn, String name, String author) {
-        this.uuid = UUID.randomUUID();
+    private ArrayList<Tags> tags = new ArrayList<Tags>();
 
+    public Book() {}
+    public Book(String isbn, String name, String author) {
         this.isbn = isbn;
         this.name = name;
         this.author = author;
     }
 
     // Accessor methods
-    public UUID getUUID() {
-        return uuid;
-    }
 
     public String getIsbn() {
         return isbn;
@@ -41,11 +38,15 @@ public class Book {
         return tags;
     }
 
-    public Tags getTag(int index) throws ArrayIndexOutOfBoundsException {
+    public Tags getTag(int index) {
         return tags.get(index);
     }
 
-    public void removeTag(int index) throws ArrayIndexOutOfBoundsException {
+    public void addTag(Tags tag) {
+        tags.add(tag);
+    }
+
+    public void removeTag(int index) {
         tags.remove(index);
     }
 
@@ -59,5 +60,9 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String toString() {
+        return "ISBN: " + isbn + "\nTitle: " + name + "\nAuthor: " + author;
     }
 }
