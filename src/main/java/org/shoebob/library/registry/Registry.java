@@ -1,4 +1,4 @@
-package org.shoebob.library;
+package org.shoebob.library.registry;
 
 import org.shoebob.library.interfaces.RegistryItem;
 

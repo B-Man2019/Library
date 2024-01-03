@@ -1,10 +1,9 @@
-package org.shoebob.library.registry_items;
+package org.shoebob.library.registry.items;
 
 import org.shoebob.library.enums.Tags;
 import org.shoebob.library.interfaces.RegistryItem;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Book implements RegistryItem {
     // TODO: Find the correct data type for an ISBN number

@@ -1,6 +1,6 @@
-package org.shoebob.library.registry_items.user;
+package org.shoebob.library.registry.items.user;
 
-import org.shoebob.library.registry_items.Book;
+import org.shoebob.library.registry.items.Book;
 import org.shoebob.library.interfaces.RegistryItem;
 
 import java.util.ArrayList;

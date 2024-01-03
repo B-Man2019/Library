@@ -1,16 +1,15 @@
-package org.shoebob.library;
+package org.shoebob.library.firestore;
 
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
-import org.shoebob.library.registry_items.Book;
-import org.shoebob.library.registry_items.user.Admin;
-import org.shoebob.library.registry_items.user.Patron;
+import org.shoebob.library.Main;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,31 +20,34 @@ public class FirestoreDataFactory {
 
     public FirestoreDataFactory() throws IOException  {
             FileInputStream serviceAccount = new FileInputStream("FirebaseServiceKey.json");
+            FirestoreOptions firestoreOptions = FirestoreOptions.newBuilder()
+                .setEmulatorHost("localhost:8080")
+                .build();
 
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .build();
+            FirebaseOptions options;
+            if (!Main.DEBUG) {
+                options = new FirebaseOptions.Builder()
+                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                        .build();
+            } else {
+                options = new FirebaseOptions.Builder()
+                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                        .setFirestoreOptions(firestoreOptions)
+                        .build();
+            }
+
 
             FirebaseApp.initializeApp(options);
 
             this.db = FirestoreClient.getFirestore();
     }
 
-    public void addPatron(Patron patron) {
-        // creates a new document that is titled by the patron's username, and then puts in the object
-        makeWritePromise("patrons", patron.getUsername(), patron);
+    public <E> void addObject(E object, String collection, String identifier) {
+        makeWritePromise(collection, identifier, object);
     }
 
-    public void addAdmin(Admin admin) {
-        makeWritePromise("admins", admin.getUsername(), admin);
-    }
-
-    public void addBook(Book book) {
-        makeWritePromise("books", book.getIsbn(), book);
-    }
-
-    public Patron getPatron(String username) {
-        return makeDocReadPromise("patrons", username).toObject(Patron.class);
+    public <E> E getObject(String collection, String identifier, Class<E> type) {
+        return makeDocReadPromise(collection, identifier).toObject(type);
     }
 
     private ApiFuture<WriteResult> makeWritePromise(String collection, String documentTitle, Object object) {

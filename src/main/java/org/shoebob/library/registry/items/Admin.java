@@ -1,4 +1,4 @@
-package org.shoebob.library.registry_items.user;
+package org.shoebob.library.registry.items.user;
 
 import org.shoebob.library.interfaces.RegistryItem;
 
