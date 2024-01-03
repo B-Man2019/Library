@@ -36,3 +36,11 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### FIREBASE / FIRESTORE ###
+firebase.json
+firebase-debug.log
+FirebaseServiceKey.json
+firestore.rules
+.firebaserc
+ui-debug.log
