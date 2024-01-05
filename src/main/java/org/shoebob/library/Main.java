@@ -6,10 +6,8 @@ import org.shoebob.library.data.FirestoreDataFactory;
 import org.shoebob.library.data.SearchAndSortUtils;
 import org.shoebob.library.io.Menu;
 import org.shoebob.library.io.SimpleInput;
-import org.shoebob.library.registry.Registry;
-import org.shoebob.library.registry.items.Admin;
-import org.shoebob.library.registry.items.Book;
-import org.shoebob.library.registry.items.Patron;
+import org.shoebob.library.entities.Book;
+import org.shoebob.library.entities.Patron;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,10 +16,6 @@ public class Main {
 
     public static final boolean DEBUG = true;
     public static accountType accountType = null;
-
-    public static final Registry<Book> bookRegistry = new Registry<>();
-    public static final Registry<Patron> patronRegistry = new Registry<>();
-    public static final Registry<Admin> adminRegistry = new Registry<>();
 
     public static FirestoreDataFactory firestore = null;
     static {

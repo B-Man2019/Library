@@ -2,7 +2,7 @@ package org.shoebob.library.data;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
-import org.shoebob.library.registry.items.Book;
+import org.shoebob.library.entities.Book;
 
 import java.util.ArrayList;
 import java.util.List;

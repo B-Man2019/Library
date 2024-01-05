@@ -1,4 +1,4 @@
-package org.shoebob.library.registry.items;
+package org.shoebob.library.entities;
 
 import org.shoebob.library.enums.Tags;
 import org.shoebob.library.interfaces.RegistryItem;

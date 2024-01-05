@@ -1,7 +1,7 @@
 package org.shoebob.library.data;
 
-import org.shoebob.library.registry.items.Patron;
-import org.shoebob.library.registry.items.Admin;
+import org.shoebob.library.entities.Patron;
+import org.shoebob.library.entities.Admin;
 
 public class AccountDataFactory {
 
