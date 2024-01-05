@@ -6,16 +6,15 @@ import org.shoebob.library.interfaces.RegistryItem;
 import java.util.ArrayList;
 
 public class Book implements RegistryItem {
-    // TODO: Find the correct data type for an ISBN number
     private String isbn;
-    private String name;
+    private String title;
     private String author;
     private ArrayList<Tags> tags = new ArrayList<Tags>();
 
     public Book() {}
-    public Book(String isbn, String name, String author) {
+    public Book(String isbn, String title, String author) {
         this.isbn = isbn;
-        this.name = name;
+        this.title = title;
         this.author = author;
     }
 
@@ -25,8 +24,8 @@ public class Book implements RegistryItem {
         return isbn;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public String getAuthor() {
@@ -53,8 +52,8 @@ public class Book implements RegistryItem {
         this.isbn = isbn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setAuthor(String author) {
@@ -62,6 +61,7 @@ public class Book implements RegistryItem {
     }
 
     public String toString() {
-        return "ISBN: " + isbn + "\nTitle: " + name + "\nAuthor: " + author;
+        return "ISBN: " + isbn + "\tTitle: " + title + "\tAuthor: " + author;
     }
+
 }

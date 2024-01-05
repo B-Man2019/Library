@@ -1,11 +1,8 @@
-package org.shoebob.library.firestore;
+package org.shoebob.library.data;
 
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.FirestoreOptions;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
@@ -16,7 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 public class FirestoreDataFactory {
-    Firestore db;
+    public static Firestore db;
 
     public FirestoreDataFactory() throws IOException  {
             FileInputStream serviceAccount = new FileInputStream("FirebaseServiceKey.json");
@@ -50,6 +47,10 @@ public class FirestoreDataFactory {
         return makeDocReadPromise(collection, identifier).toObject(type);
     }
 
+    public CollectionReference makeCollectionReference(String collection) {
+        return db.collection(collection);
+    }
+
     private ApiFuture<WriteResult> makeWritePromise(String collection, String documentTitle, Object object) {
         ApiFuture<WriteResult> future = db.collection(collection).document(documentTitle).set(object);
         if (Main.DEBUG) {
@@ -63,6 +64,16 @@ public class FirestoreDataFactory {
         }
 
         return future;
+    }
+
+    public QuerySnapshot getQuerySnapshot(String collection ) {
+        try {
+            return db.collection(collection).get().get();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private DocumentSnapshot makeDocReadPromise(String collection, String document) {
@@ -89,4 +100,6 @@ public class FirestoreDataFactory {
 
         return doc;
     }
+
+
 }

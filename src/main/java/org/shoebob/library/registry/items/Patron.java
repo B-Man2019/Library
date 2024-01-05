@@ -1,12 +1,10 @@
-package org.shoebob.library.registry.items.user;
+package org.shoebob.library.registry.items;
 
-import org.shoebob.library.registry.items.Book;
 import org.shoebob.library.interfaces.RegistryItem;
 
 import java.util.ArrayList;
 
 public class Patron implements RegistryItem {
-    // TODO: Find valid data type for card #
     String firstName, lastName;
     String username, password;
 

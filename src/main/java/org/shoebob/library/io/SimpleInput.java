@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class SimpleInput {
     private Scanner scan = new Scanner(System.in);
+    private static Scanner staticScan = new Scanner(System.in);
     private String message;
 
     public SimpleInput(String message) {
@@ -57,5 +58,10 @@ public class SimpleInput {
             }
         }
         return value;
+    }
+
+    public static void prompt() {
+        System.out.print("Press enter to continue...");
+        staticScan.nextLine();
     }
 }
