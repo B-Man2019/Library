@@ -1,15 +1,42 @@
+
 # Library
-An example repository for a library written in Java that utilizes Firestore for database integration
+![GitHub License](https://img.shields.io/github/license/B-Man2019/Library)
+
+A simple implementation of a Library written in Java that utilizes Firestore as the backend
+
+
 
 ## What I learned
-I learned more about:
+
 - Types in Java
 - Promises and code blocking
 - Databases and networking through the cloud
 - Managing code through GitHub and Git
 
-## Quickstart
-1. Create a new Project in Firebase
-2. Get the private key and put it into the root project directory
-3. Rename it to `FirebaseServiceKey.json`
-4. If using the emulator, download the Firebase CLI and switch the `DEBUG` flag in `Main.java` to `true`
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/B-Man2019/Library
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Open the project in IntelliJ
+
+Install the Firebase CLI
+
+Run the emulator, and switch the `DEBUG` flag in `Main.java` to `true`
+
+Run `Main.java` in IntelliJ
