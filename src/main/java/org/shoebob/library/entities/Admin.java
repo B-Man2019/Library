@@ -12,6 +12,8 @@ public class Admin implements RegistryItem {
         this.password = password;
     }
 
+    public Admin() {}
+
     public String getFirstName() {
         return firstName;
     }
