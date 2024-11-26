@@ -8,7 +8,7 @@ A simple implementation of a Library written in Java that utilizes Firestore as 
 
 ## What I learned
 
-- Types in Java
+- Templates in Java
 - Promises and code blocking
 - Databases and networking through the cloud
 - Managing code through GitHub and Git
